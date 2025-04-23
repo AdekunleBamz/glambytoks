@@ -5,12 +5,11 @@ const Portfolio = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const portfolioImages = [
-    { id: 1, src: '', title: 'Bridal Makeup', category: 'Bridal' },
-    { id: 2, src: '', title: 'Evening Glam', category: 'Evening' },
-    { id: 3, src: '', title: 'Natural Look', category: 'Natural' },
-    { id: 4, src: '', title: 'Editorial Makeup', category: 'Editorial' },
-    { id: 5, src: '', title: 'Special Occasion', category: 'Special' },
-    { id: 6, src: '', title: 'Bridal Party', category: 'Bridal' },
+    { id: 1, src: '/images/portfolio/portfolio1.jpg', title: 'Bridal Makeup', category: 'Bridal' },
+    { id: 2, src: '/images/portfolio/portfolio2.jpg', title: 'Evening Glam', category: 'Evening' },
+    { id: 3, src: '/images/portfolio/portfolio3.jpg', title: 'Natural Look', category: 'Natural' },
+    { id: 4, src: '/images/portfolio/portfolio4.jpg', title: 'Editorial Makeup', category: 'Editorial' },
+    { id: 5, src: '/images/portfolio/portfolio5.jpg', title: 'Special Occasion', category: 'Special' },
   ];
 
   const handleImageClick = (image) => {
@@ -36,9 +35,16 @@ const Portfolio = () => {
             onClick={() => handleImageClick(image)}
           >
             <div className="image-container">
-              <div className="placeholder-image">
-                <span className="image-title">{image.title}</span>
-              </div>
+              <img 
+                src={image.src} 
+                alt={image.title}
+                className="portfolio-image"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '';
+                  e.target.parentElement.classList.add('placeholder-image');
+                }}
+              />
             </div>
             <div className="image-info">
               <h3>{image.title}</h3>
@@ -53,9 +59,16 @@ const Portfolio = () => {
           <div className="modal-content" onClick={e => e.stopPropagation()}>
             <span className="close-button" onClick={handleCloseModal}>&times;</span>
             <div className="modal-image-container">
-              <div className="placeholder-image large">
-                <span className="image-title">{selectedImage.title}</span>
-              </div>
+              <img 
+                src={selectedImage.src} 
+                alt={selectedImage.title}
+                className="modal-image"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '';
+                  e.target.parentElement.classList.add('placeholder-image');
+                }}
+              />
             </div>
             <div className="modal-info">
               <h2>{selectedImage.title}</h2>

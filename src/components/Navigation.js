@@ -10,11 +10,22 @@ const Nav = styled.nav`
   padding: 1rem 0;
 `;
 
-const Logo = styled(Link)`
-  font-size: 1.8rem;
-  font-weight: 800;
+const LogoContainer = styled(Link)`
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: inherit;
+`;
+
+const LogoImage = styled.img`
+  height: 50px;
+  width: auto;
+  margin-right: 1rem;
+`;
+
+const LogoText = styled.span`
+  font-size: 1.8rem;
+  font-weight: 800;
   letter-spacing: 0.05em;
   
   &:hover {
@@ -53,9 +64,10 @@ const Navigation = () => {
   return (
     <Container>
       <Nav>
-        <Logo to="/">
-          GLAMBYTOKS
-        </Logo>
+        <LogoContainer to="/">
+          <LogoImage src="/images/logo.png" alt="GlamByToks Logo" />
+          <LogoText>GLAMBYTOKS</LogoText>
+        </LogoContainer>
         <NavLinks>
           <NavLink to="/">Home</NavLink>
           <NavLink to="/services">Services</NavLink>

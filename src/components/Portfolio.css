@@ -155,4 +155,93 @@
   .portfolio-item:hover {
     transform: scale(1.03);
   }
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholder-image {
+  background: linear-gradient(45deg, #f3f3f3 25%, #e0e0e0 50%, #f3f3f3 75%);
+  background-size: 200% 200%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.image-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .image-info {
+  transform: translateY(0);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+.modal-image-container {
+  max-width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.modal-info {
+  padding: 1rem;
+  text-align: center;
 } 
