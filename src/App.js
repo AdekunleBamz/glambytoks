@@ -9,6 +9,7 @@ import ServicesPage from './pages/ServicesPage'; // Adjusted import
 import Portfolio from './components/Portfolio'; // Adjusted import
 import Navigation from './components/Navigation'; // Adjusted import
 import About from './components/About'; // Adjusted import for About
+import Contact from './components/Contact';
 
 // Define theme...
 const theme = createTheme({
@@ -56,6 +57,7 @@ function App() {
                 <Route path="/services" element={<ServicesPage />} />
                 <Route path="/portfolio" element={<Portfolio />} />
                 <Route path="/about" element={<About />} /> {/* Corrected path */}
+                <Route path="/contact" element={<Contact />} />
               </Routes>
             </MainContent>
             <Footer>
