@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Portfolio.css';
+import TypingText from './TypingText';
 
 const Portfolio = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -12,6 +13,14 @@ const Portfolio = () => {
     { id: 5, src: '/images/portfolio/portfolio5.jpg', title: 'Special Occasion', category: 'Special' },
   ];
 
+  const promotionalTexts = [
+    "Professional Makeup Artistry at its Finest",
+    "Transform Your Look with Expert Techniques",
+    "Perfect for Weddings and Special Events",
+    "Customized Makeup for Every Occasion",
+    "Experience the GlamByToks Difference"
+  ];
+
   const handleImageClick = (image) => {
     setSelectedImage(image);
   };
@@ -20,11 +29,24 @@ const Portfolio = () => {
     setSelectedImage(null);
   };
 
+  const handleImageError = (e) => {
+    console.error('Error loading image:', e.target.src);
+    e.target.onerror = null;
+    e.target.style.display = 'none';
+    e.target.parentElement.classList.add('placeholder-image');
+  };
+
   return (
     <div className="portfolio-container">
       <div className="portfolio-header">
         <h1>Our Portfolio</h1>
         <p>Discover the artistry and creativity behind GlamByToks</p>
+        <TypingText 
+          texts={promotionalTexts}
+          typingSpeed={100}
+          deletingSpeed={50}
+          delay={2000}
+        />
       </div>
       
       <div className="portfolio-grid">
@@ -39,11 +61,7 @@ const Portfolio = () => {
                 src={image.src} 
                 alt={image.title}
                 className="portfolio-image"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = '';
-                  e.target.parentElement.classList.add('placeholder-image');
-                }}
+                onError={handleImageError}
               />
             </div>
             <div className="image-info">
@@ -63,11 +81,7 @@ const Portfolio = () => {
                 src={selectedImage.src} 
                 alt={selectedImage.title}
                 className="modal-image"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = '';
-                  e.target.parentElement.classList.add('placeholder-image');
-                }}
+                onError={handleImageError}
               />
             </div>
             <div className="modal-info">
